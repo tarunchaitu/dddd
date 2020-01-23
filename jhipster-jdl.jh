@@ -1,0 +1,44 @@
+entity SharedAgent {
+    name String required,
+    description String,
+    noOfExecutors Integer required,
+    label String required,
+    workspace String required,
+    dnsName	String required,
+    agentState AgentState required,
+    bootstrapMetod BootstrapMethod required,
+    os Os required,
+    sshPort Integer,
+    jvmOptions String
+}
+
+enum BootstrapMethod {
+	SSH,
+    JNLP
+}
+
+enum Os {
+	WINDOWS,
+    MAC,
+    LINUX
+}
+
+enum AgentState {
+    ONLINE,
+    OFFLINE,
+    LEASED
+}
+
+entity SshCredentials {
+	name String required,
+    username String required,
+    password String,
+    sshKey String
+}
+
+relationship OneToMany {
+  SshCredentials to SharedAgent{sshCredentials(name)}
+}
+
+paginate SharedAgent, SshCredentials with infinite-scroll
+service all with serviceImpl
