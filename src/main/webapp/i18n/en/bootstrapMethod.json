@@ -1,0 +1,9 @@
+{
+  "jeevesdemoApp": {
+    "BootstrapMethod": {
+      "null": "",
+      "SSH": "SSH",
+      "JNLP": "JNLP"
+    }
+  }
+}

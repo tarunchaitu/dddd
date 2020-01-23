@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jeevesdemoApp.sharedAgent.home.title">Shared Agents</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-shared-agent" [routerLink]="['/shared-agent/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jeevesdemoApp.sharedAgent.home.createLabel">
+            Create a new Shared Agent
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="sharedAgents?.length === 0">
+        <span jhiTranslate="jeevesdemoApp.sharedAgent.home.notFound">No sharedAgents found</span>
+    </div>
+    <div class="table-responsive" *ngIf="sharedAgents?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="name"><span jhiTranslate="jeevesdemoApp.sharedAgent.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="description"><span jhiTranslate="jeevesdemoApp.sharedAgent.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="noOfExecutors"><span jhiTranslate="jeevesdemoApp.sharedAgent.noOfExecutors">No Of Executors</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="label"><span jhiTranslate="jeevesdemoApp.sharedAgent.label">Label</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="workspace"><span jhiTranslate="jeevesdemoApp.sharedAgent.workspace">Workspace</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dnsName"><span jhiTranslate="jeevesdemoApp.sharedAgent.dnsName">Dns Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="agentState"><span jhiTranslate="jeevesdemoApp.sharedAgent.agentState">Agent State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="bootstrapMetod"><span jhiTranslate="jeevesdemoApp.sharedAgent.bootstrapMetod">Bootstrap Metod</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="os"><span jhiTranslate="jeevesdemoApp.sharedAgent.os">Os</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sshPort"><span jhiTranslate="jeevesdemoApp.sharedAgent.sshPort">Ssh Port</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="jvmOptions"><span jhiTranslate="jeevesdemoApp.sharedAgent.jvmOptions">Jvm Options</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="sshCredentials.name"><span jhiTranslate="jeevesdemoApp.sharedAgent.sshCredentials">Ssh Credentials</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let sharedAgent of sharedAgents ;trackBy: trackId">
+                <td><a [routerLink]="['/shared-agent', sharedAgent.id, 'view' ]">{{sharedAgent.id}}</a></td>
+                <td>{{sharedAgent.name}}</td>
+                <td>{{sharedAgent.description}}</td>
+                <td>{{sharedAgent.noOfExecutors}}</td>
+                <td>{{sharedAgent.label}}</td>
+                <td>{{sharedAgent.workspace}}</td>
+                <td>{{sharedAgent.dnsName}}</td>
+                <td jhiTranslate="{{'jeevesdemoApp.AgentState.' + sharedAgent.agentState}}">{{sharedAgent.agentState}}</td>
+                <td jhiTranslate="{{'jeevesdemoApp.BootstrapMethod.' + sharedAgent.bootstrapMetod}}">{{sharedAgent.bootstrapMetod}}</td>
+                <td jhiTranslate="{{'jeevesdemoApp.Os.' + sharedAgent.os}}">{{sharedAgent.os}}</td>
+                <td>{{sharedAgent.sshPort}}</td>
+                <td>{{sharedAgent.jvmOptions}}</td>
+                <td>
+                    <div *ngIf="sharedAgent.sshCredentials">
+                        <a [routerLink]="['/ssh-credentials', sharedAgent.sshCredentials?.id, 'view' ]" >{{sharedAgent.sshCredentials?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/shared-agent', sharedAgent.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/shared-agent', sharedAgent.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(sharedAgent)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

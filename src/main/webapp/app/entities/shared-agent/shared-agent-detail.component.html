@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sharedAgent">
+            <h2><span jhiTranslate="jeevesdemoApp.sharedAgent.detail.title">Shared Agent</span> {{sharedAgent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.name">Name</span></dt>
+                <dd>
+                    <span>{{sharedAgent.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.description">Description</span></dt>
+                <dd>
+                    <span>{{sharedAgent.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.noOfExecutors">No Of Executors</span></dt>
+                <dd>
+                    <span>{{sharedAgent.noOfExecutors}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.label">Label</span></dt>
+                <dd>
+                    <span>{{sharedAgent.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.workspace">Workspace</span></dt>
+                <dd>
+                    <span>{{sharedAgent.workspace}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.dnsName">Dns Name</span></dt>
+                <dd>
+                    <span>{{sharedAgent.dnsName}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.agentState">Agent State</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jeevesdemoApp.AgentState.' + sharedAgent.agentState}}">{{sharedAgent.agentState}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.bootstrapMetod">Bootstrap Metod</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jeevesdemoApp.BootstrapMethod.' + sharedAgent.bootstrapMetod}}">{{sharedAgent.bootstrapMetod}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.os">Os</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jeevesdemoApp.Os.' + sharedAgent.os}}">{{sharedAgent.os}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.sshPort">Ssh Port</span></dt>
+                <dd>
+                    <span>{{sharedAgent.sshPort}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.jvmOptions">Jvm Options</span></dt>
+                <dd>
+                    <span>{{sharedAgent.jvmOptions}}</span>
+                </dd>
+                <dt><span jhiTranslate="jeevesdemoApp.sharedAgent.sshCredentials">Ssh Credentials</span></dt>
+                <dd>
+                    <div *ngIf="sharedAgent.sshCredentials">
+                        <a [routerLink]="['/ssh-credentials', sharedAgent.sshCredentials?.id, 'view']">{{sharedAgent.sshCredentials?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shared-agent', sharedAgent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

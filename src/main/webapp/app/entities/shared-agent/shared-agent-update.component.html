@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-shared-agent-heading" jhiTranslate="jeevesdemoApp.sharedAgent.home.createOrEditLabel">Create or edit a Shared Agent</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.noOfExecutors" for="field_noOfExecutors">No Of Executors</label>
+                    <input type="number" class="form-control" name="noOfExecutors" id="field_noOfExecutors"
+                           formControlName="noOfExecutors"/>
+                    <div *ngIf="editForm.get('noOfExecutors')!.invalid && (editForm.get('noOfExecutors')!.dirty || editForm.get('noOfExecutors')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('noOfExecutors')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('noOfExecutors')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.label" for="field_label">Label</label>
+                    <input type="text" class="form-control" name="label" id="field_label"
+                           formControlName="label"/>
+                    <div *ngIf="editForm.get('label')!.invalid && (editForm.get('label')!.dirty || editForm.get('label')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('label')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.workspace" for="field_workspace">Workspace</label>
+                    <input type="text" class="form-control" name="workspace" id="field_workspace"
+                           formControlName="workspace"/>
+                    <div *ngIf="editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('workspace')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.dnsName" for="field_dnsName">Dns Name</label>
+                    <input type="text" class="form-control" name="dnsName" id="field_dnsName"
+                           formControlName="dnsName"/>
+                    <div *ngIf="editForm.get('dnsName')!.invalid && (editForm.get('dnsName')!.dirty || editForm.get('dnsName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dnsName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.agentState" for="field_agentState">Agent State</label>
+                    <select class="form-control" name="agentState" formControlName="agentState" id="field_agentState">
+                        <option value="ONLINE">{{'jeevesdemoApp.AgentState.ONLINE' | translate}}</option>
+                        <option value="OFFLINE">{{'jeevesdemoApp.AgentState.OFFLINE' | translate}}</option>
+                        <option value="LEASED">{{'jeevesdemoApp.AgentState.LEASED' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('agentState')!.invalid && (editForm.get('agentState')!.dirty || editForm.get('agentState')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('agentState')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.bootstrapMetod" for="field_bootstrapMetod">Bootstrap Metod</label>
+                    <select class="form-control" name="bootstrapMetod" formControlName="bootstrapMetod" id="field_bootstrapMetod">
+                        <option value="SSH">{{'jeevesdemoApp.BootstrapMethod.SSH' | translate}}</option>
+                        <option value="JNLP">{{'jeevesdemoApp.BootstrapMethod.JNLP' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('bootstrapMetod')!.invalid && (editForm.get('bootstrapMetod')!.dirty || editForm.get('bootstrapMetod')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bootstrapMetod')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.os" for="field_os">Os</label>
+                    <select class="form-control" name="os" formControlName="os" id="field_os">
+                        <option value="WINDOWS">{{'jeevesdemoApp.Os.WINDOWS' | translate}}</option>
+                        <option value="MAC">{{'jeevesdemoApp.Os.MAC' | translate}}</option>
+                        <option value="LINUX">{{'jeevesdemoApp.Os.LINUX' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('os')!.invalid && (editForm.get('os')!.dirty || editForm.get('os')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('os')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.sshPort" for="field_sshPort">Ssh Port</label>
+                    <input type="number" class="form-control" name="sshPort" id="field_sshPort"
+                           formControlName="sshPort"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.jvmOptions" for="field_jvmOptions">Jvm Options</label>
+                    <input type="text" class="form-control" name="jvmOptions" id="field_jvmOptions"
+                           formControlName="jvmOptions"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jeevesdemoApp.sharedAgent.sshCredentials" for="field_sshCredentials">Ssh Credentials</label>
+                    <select class="form-control" id="field_sshCredentials" name="sshCredentials" formControlName="sshCredentials">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sshCredentialsOption.id === editForm.get('sshCredentials')!.value?.id ? editForm.get('sshCredentials')!.value : sshCredentialsOption" *ngFor="let sshCredentialsOption of sshcredentials; trackBy: trackById">{{sshCredentialsOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

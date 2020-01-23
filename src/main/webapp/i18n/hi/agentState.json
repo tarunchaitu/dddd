@@ -1,0 +1,10 @@
+{
+  "jeevesdemoApp": {
+    "AgentState": {
+      "null": "",
+      "ONLINE": "ONLINE",
+      "OFFLINE": "OFFLINE",
+      "LEASED": "LEASED"
+    }
+  }
+}

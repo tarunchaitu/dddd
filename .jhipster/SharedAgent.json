@@ -1,0 +1,95 @@
+{
+    "name": "SharedAgent",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "noOfExecutors",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "label",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "workspace",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dnsName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "agentState",
+            "fieldType": "AgentState",
+            "fieldValues": "ONLINE,OFFLINE,LEASED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bootstrapMetod",
+            "fieldType": "BootstrapMethod",
+            "fieldValues": "SSH,JNLP",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "os",
+            "fieldType": "Os",
+            "fieldValues": "WINDOWS,MAC,LINUX",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sshPort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "jvmOptions",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "sshCredentials",
+            "otherEntityRelationshipName": "sharedAgent",
+            "relationshipName": "sshCredentials",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200123172033",
+    "entityTableName": "shared_agent",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

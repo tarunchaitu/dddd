@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity SharedAgent.
+    -->
+    <changeSet id="20200123172033-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ssh_credentials_id"
+                                 baseTableName="shared_agent"
+                                 constraintName="fk_shared_agent_ssh_credentials_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ssh_credentials"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,10 @@
+{
+  "jeevesdemoApp": {
+    "Os": {
+      "null": "",
+      "WINDOWS": "WINDOWS",
+      "MAC": "MAC",
+      "LINUX": "LINUX"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "jeevesdemoApp": {
+    "sharedAgent": {
+      "home": {
+        "title": "Shared Agents",
+        "createLabel": "Create a new Shared Agent",
+        "createOrEditLabel": "Create or edit a Shared Agent",
+        "notFound": "No Shared Agents found"
+      },
+      "created": "A new Shared Agent is created with identifier {{ param }}",
+      "updated": "A Shared Agent is updated with identifier {{ param }}",
+      "deleted": "A Shared Agent is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shared Agent {{ id }}?"
+      },
+      "detail": {
+        "title": "Shared Agent"
+      },
+      "name": "Name",
+      "description": "Description",
+      "noOfExecutors": "No Of Executors",
+      "label": "Label",
+      "workspace": "Workspace",
+      "dnsName": "Dns Name",
+      "agentState": "Agent State",
+      "bootstrapMetod": "Bootstrap Metod",
+      "os": "Os",
+      "sshPort": "Ssh Port",
+      "jvmOptions": "Jvm Options",
+      "sshCredentials": "Ssh Credentials"
+    }
+  }
+}
