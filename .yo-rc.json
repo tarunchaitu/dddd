@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.github.tarunchaitu",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.6.0",
+    "applicationType": "monolith",
+    "baseName": "jeevesdemo",
+    "packageName": "com.github.tarunchaitu",
+    "packageFolder": "com/github/tarunchaitu",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTc4MWU5OTg2MDU2M2ZiMmQyNWVlZGFkZGQ3ZTRjMjM3ZTkxMjdkNDNlZTQ4YWU1MjY2NzI4MmZlNmI4YzQxYzc1N2E3MTJmMTZhNTcxNDc1MjVmZmM1N2NjNTQyNDYwNDlkZTViNDM3M2U4MGY4NGQ4ODlkOWFjZDVlYmQwNmQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1579406949844,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "hi"],
+    "blueprints": []
+  }
+}
